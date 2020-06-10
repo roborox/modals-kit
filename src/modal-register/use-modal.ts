@@ -16,5 +16,6 @@ export function useModal(id: string, initial: Partial<ModalRegister.ModalState> 
 			next: (prev: ModalRegister.ModalState) => ModalRegister.ModalState,
 		) => context.updateModal(id, next),
 		registerModal: (initial: Partial<ModalRegister.ModalState> = {}) => context.registerModal(id, initial),
+		unregisterModal: () => context.unregisterModal(id),
 	}
 }

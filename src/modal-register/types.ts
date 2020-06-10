@@ -8,6 +8,7 @@ export namespace ModalRegister {
 		registerModal: (id: string, initialProps: Partial<ModalState>) => void
 		updateModal: (id: string, next: (prev: ModalState) => ModalState) => void
 		getState: (id: string) => ModalState | undefined
+		unregisterModal: (id: string) => void
 	}
 
 	export type Logger = {

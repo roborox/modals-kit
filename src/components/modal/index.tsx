@@ -12,6 +12,8 @@ export function Modal({ id, ...restProps }: ModalProps) {
 
 	useEffect(() => {
 		modal.registerModal(restProps)
+
+		return modal.unregisterModal
 	}, [modal, modal.registerModal, restProps])
 
 	return (

@@ -39,6 +39,10 @@ export function ModalRegisterProvider({
 		}
 	}, [setItem, defaultState, register])
 
+	const unregisterModal = useCallback((id) => {
+		register.delete(id)
+	}, [register])
+
 	const toggleModal = useCallback((id: string, isVisible: boolean) => {
 		updateModal(id, prev => ({ ...prev, isVisible }))
 	}, [updateModal])
@@ -55,6 +59,7 @@ export function ModalRegisterProvider({
 				registerModal,
 				updateModal,
 				getState,
+				unregisterModal,
 			}}
 		>
 			{children}
