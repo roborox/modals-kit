@@ -13,7 +13,7 @@ const simpleLogger = {
 const HalfScreenModal = () => {
 	const toggle = useModal("half-screen")
 	return (
-		<ModalHalfBottom heightRatio={0.33} id="half-screen">
+		<ModalHalfBottom maxHeight={200} id="half-screen">
 			<Button title="Hide modal" onPress={() => toggle(false)} />
 		</ModalHalfBottom>
 	)
@@ -24,7 +24,7 @@ const SimpleModal = () => {
 	const [backgroundColor, setBackgroundColor] = useState("red")
 	return (
 		<Modal backdropColor={backgroundColor} id="simple">
-			<View style={{ flex: 1,  alignItems: "center", justifyContent: "center" }}>
+			<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
 				<Button title="Hide modal" onPress={() => toggle(false)} />
 				<Button 
 					title="Change backdrop color" 

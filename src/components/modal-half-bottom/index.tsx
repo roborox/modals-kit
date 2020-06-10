@@ -39,12 +39,12 @@ const modalHalfBottomStyles: StyleSheet.NamedStyles<ModalHalfBottomStyles> = {
 
 export type ModalHalfBottomProps = ModalProps & {
 	styles?: Partial<ModalHalfBottomStyles>
-	heightRatio?: number
+	maxHeight?: number
 }
 
 const BottomSafeArea = withSafeArea(View, "padding", "bottom")
 
-export function ModalHalfBottom({ heightRatio = 0.5, styles = {}, children, ...restProps }: ModalHalfBottomProps) {
+export function ModalHalfBottom({ maxHeight, styles = {}, children, ...restProps }: ModalHalfBottomProps) {
 	const { height } = useWindowDimensions()
 	const combinedStyles = useMemo(() => {
 		return deepmerge(modalHalfBottomStyles, styles)
@@ -60,9 +60,9 @@ export function ModalHalfBottom({ heightRatio = 0.5, styles = {}, children, ...r
 			{...restProps}
 		>
 			<View
-				style={[combinedStyles.root, {
-					maxHeight: height * heightRatio,
-				}]}
+				style={[{
+					maxHeight: maxHeight ? maxHeight : height * 0.5,
+				}, combinedStyles.root]}
 			>
 				<CloseButton onPress={() => toggle(false)} style={combinedStyles.closeButton} />
 				<BottomSafeArea style={combinedStyles.content}>
