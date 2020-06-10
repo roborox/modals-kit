@@ -4,6 +4,9 @@
 	"description": "React-native-modals wrapper for building better apps with modals",
 	"main": "build/lib/index.js",
 	"types": "build/lib/index.d.ts",
+	"publishConfig": {
+		"access": "public"
+	},
 	"files": [
 		"build",
 		"typings.d.ts"
@@ -29,8 +32,8 @@
 	},
 	"license": "ISC",
 	"repository": {
-		"type": "bitbucket",
-		"url": "https://bitbucket.org/roborox/modals-kit"
+		"type": "git",
+		"url": "https://github.com/roborox/modals-kit"
 	},
 	"devDependencies": {
 		"@roborox/eslint-config-default": "2.1.4",
