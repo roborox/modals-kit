@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/roborox/modals-kit/compare/v1.0.0...v1.1.0) (2020-06-10)
+
+
+### Features
+
+* add ModalHalfBottom component ([1dc77b4](https://github.com/roborox/modals-kit/commit/1dc77b464ad2cbcf3bb9d9070f296110db7acbed))
+
 # 1.0.0 (2020-06-10)
 
 
