@@ -4,7 +4,7 @@ import { TouchableOpacity, TouchableOpacityProps } from "react-native"
 import { styles } from "./styles"
 
 export type CloseButtonProps = TouchableOpacityProps & {
-	svgProps: any
+	svgProps?: any
 	iconColor?: string
 	iconSize?: number
 	size?: number
@@ -12,7 +12,7 @@ export type CloseButtonProps = TouchableOpacityProps & {
 
 
 export function CloseButton({
-	style, svgProps, size, iconSize = 18, iconColor = "rgba(255, 255, 255, 0.6)", ...restProps
+	style, svgProps, size = 36, iconSize = 14, iconColor = "rgba(255, 255, 255, 0.6)", ...restProps
 }: CloseButtonProps) {
 	return (
 		<TouchableOpacity

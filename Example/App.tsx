@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SafeAreaView, View, StatusBar, Text, Button } from "react-native";
-import { Modal, ModalRegisterProvider, useModal } from "../src"
+import { Modal, ModalRegisterProvider, useModal, ModalHalfBottom } from "../src"
 
 declare const global: {HermesInternal: null | {}};
 
@@ -10,13 +10,20 @@ const simpleLogger = {
 	info: (...args: any[]) => console.log("[INFO]", ...args),
 }
 
-const customModalId = "my-modal"
+const HalfScreenModal = () => {
+	const toggle = useModal("half-screen")
+	return (
+		<ModalHalfBottom heightRatio={0.33} id="half-screen">
+			<Button title="Hide modal" onPress={() => toggle(false)} />
+		</ModalHalfBottom>
+	)
+}
 
-const MyCustomModal = () => {
-	const toggle = useModal(customModalId)
+const SimpleModal = () => {
+	const toggle = useModal("simple")
 	const [backgroundColor, setBackgroundColor] = useState("red")
 	return (
-		<Modal backdropColor={backgroundColor} id={customModalId}>
+		<Modal backdropColor={backgroundColor} id="simple">
 			<View style={{ flex: 1,  alignItems: "center", justifyContent: "center" }}>
 				<Button title="Hide modal" onPress={() => toggle(false)} />
 				<Button 
@@ -29,13 +36,18 @@ const MyCustomModal = () => {
 }
 
 const App = () => {
-	const toggle = useModal(customModalId)
+	const toggle1 = useModal("simple")
+	const toggle2 = useModal("half-screen")
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
-			<MyCustomModal />
+			<SimpleModal />
+			<HalfScreenModal />
 			<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-				<Text onPress={() => toggle(true)}>
-					Open modal
+				<Text onPress={() => toggle1(true)}>
+					Open basic modal
+				</Text>
+				<Text onPress={() => toggle2(true)}>
+					Open half screen modal
 				</Text>
 			</View>
 		</SafeAreaView>

@@ -6,7 +6,7 @@ export type CloseButtonStyles = {
 
 export const styles: StyleSheet.NamedStyles<CloseButtonStyles> = {
 	root: {
-		backgroundColor: "rgba(0, 0, 0, 0.7)",
+		backgroundColor: "rgba(0, 0, 0, 0.5)",
 		alignItems: "center",
 		justifyContent: "center",
 	},
