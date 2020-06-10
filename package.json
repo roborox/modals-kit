@@ -1,0 +1,63 @@
+{
+	"name": "@roborox/modals-kit",
+	"version": "0.1.0",
+	"description": "React-native-modals wrapper for building better apps with modals",
+	"main": "build/lib/index.js",
+	"types": "build/lib/index.d.ts",
+	"files": [
+		"build",
+		"typings.d.ts"
+	],
+	"scripts": {
+		"build": "npm run lint && npm run build-lib",
+		"build-lib": "rimraf ./build && tsc",
+		"test": "jest --passWithNoTests",
+		"lint": "./node_modules/.bin/eslint --ext .js,.ts,.ts,.tsx ./",
+		"lint:fix": "./node_modules/.bin/eslint --ext .js,.ts,.ts,.tsx ./ --fix",
+		"ci": "sh ./scripts/ci.sh",
+		"release": "sh ./scripts/release.sh"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run lint && npm run test"
+		}
+	},
+	"author": {
+		"url": "https://roborox.org",
+		"email": "hello@roborox.org",
+		"name": "roborox.org"
+	},
+	"license": "ISC",
+	"repository": {
+		"type": "bitbucket",
+		"url": "https://bitbucket.org/roborox/modals-kit"
+	},
+	"devDependencies": {
+		"@roborox/eslint-config-default": "2.1.4",
+		"@semantic-release/changelog": "5.0.0",
+		"@semantic-release/commit-analyzer": "8.0.1",
+		"@semantic-release/git": "9.0.0",
+		"@semantic-release/npm": "7.0.2",
+		"@semantic-release/release-notes-generator": "9.0.0",
+		"@types/jest": "25.1.2",
+		"@types/react-native": "0.61.23",
+		"@types/react-native-modal": "4.1.1",
+		"babel-eslint": "10.1.0",
+		"babel-jest": "25.3.0",
+		"eslint": "6.8.0",
+		"eslint-plugin-react": "7.20.0",
+		"husky": "4.2.2",
+		"jest": "25.5.4",
+		"react": "16.9.0",
+		"react-native": "0.61.5",
+		"react-native-svg": "12.1.0",
+		"rimraf": "3.0.2",
+		"semantic-release": "17.0.2",
+		"ts-jest": "25.2.0",
+		"typescript": "3.7.5"
+	},
+	"peerDependencies": {
+		"react-native": ">= 0.61.5",
+		"react-native-modal": ">= 11.5.6"
+	}
+}
