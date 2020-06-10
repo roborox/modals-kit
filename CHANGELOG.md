@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/roborox/modals-kit/compare/v1.1.0...v1.1.1) (2020-06-10)
+
+
+### Bug Fixes
+
+* fix ModalHalfBottom styles ([86f953c](https://github.com/roborox/modals-kit/commit/86f953cdcc3eddfc951207fcfb555a439c2f6778))
+
 # [1.1.0](https://github.com/roborox/modals-kit/compare/v1.0.0...v1.1.0) (2020-06-10)
 
 

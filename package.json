@@ -1,6 +1,6 @@
 {
 	"name": "@roborox/modals-kit",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "React-native-modals wrapper for building better apps with modals",
 	"main": "build/lib/index.js",
 	"types": "build/lib/index.d.ts",
