@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, View, StatusBar, Text, Button } from "react-native";
 import { Modal, ModalRegisterProvider, useModal } from "../src"
 
@@ -13,17 +13,15 @@ const simpleLogger = {
 const customModalId = "my-modal"
 
 const MyCustomModal = () => {
-	const modal = useModal(customModalId)
+	const toggle = useModal(customModalId)
+	const [backgroundColor, setBackgroundColor] = useState("red")
 	return (
-		<Modal id={customModalId}>
+		<Modal backdropColor={backgroundColor} id={customModalId}>
 			<View style={{ flex: 1,  alignItems: "center", justifyContent: "center" }}>
-				<Button title="Hide modal" onPress={() => modal.toggleModal(false)} />
+				<Button title="Hide modal" onPress={() => toggle(false)} />
 				<Button 
 					title="Change backdrop color" 
-					onPress={() => modal.updateModal(prev => ({
-						...prev,
-						backdropColor: prev.backdropColor === "red" ? "black" : "red",
-					}))} 
+					onPress={() => setBackgroundColor(prev => prev === "red" ? "black" : "red")} 
 				/>
 			</View>
 		</Modal>
@@ -31,12 +29,12 @@ const MyCustomModal = () => {
 }
 
 const App = () => {
-	const modal = useModal(customModalId)
+	const toggle = useModal(customModalId)
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
 			<MyCustomModal />
 			<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-				<Text onPress={() => modal.toggleModal(true)}>
+				<Text onPress={() => toggle(true)}>
 					Open modal
 				</Text>
 			</View>

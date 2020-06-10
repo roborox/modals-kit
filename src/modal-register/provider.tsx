@@ -11,55 +11,36 @@ export type ModalRegisterProviderProps = {
 export function ModalRegisterProvider({
 	children, logger, defaultState = {},
 }: PropsWithChildren<ModalRegisterProviderProps>) {
-	const [register, setRegister] = useState(() => new Map<string, ModalRegister.ModalState>())
+	const [map, setMap] = useState(() => new Map<string, boolean>())
 
-	const setItem = useCallback((id: string, next: ModalRegister.ModalState) => {
-		setRegister(new Map(register.set(id, next)))
-	}, [register, setRegister])
+	const update = useCallback((id: string, next: boolean) => {
+		setMap(prev => new Map(prev.set(id, next)))
+	}, [setMap])
 
-	const updateModal = useCallback((
-		id: string, next: (prev: ModalRegister.ModalState) => ModalRegister.ModalState,
-	) => {
-		const previous = register.get(id)
-		if (!previous) {
-			logger.warn("Trying to update modal props that doesn't registered", id)
-		} else {
-			setItem(id, next(previous))
-		}
-	}, [register, logger, setItem])
+	const destroy = useCallback((id: string) => {
+		setMap(prev => {
+			prev.delete(id)
+			return new Map(prev)
+		})
+	}, [])
 
-	const registerModal = useCallback((id: string, initial: Partial<ModalRegister.ModalState> = {}) => {
-		const state = register.get(id)
-		if (!state) {
-			setItem(id, {
-				isVisible: false,
-				...defaultState,
-				...initial,
-			} as ModalRegister.ModalState)
-		}
-	}, [setItem, defaultState, register])
+	const register = useCallback((id: string, isVisible = false) => {
+		update(id, isVisible)
+	}, [update])
 
-	const unregisterModal = useCallback((id) => {
-		register.delete(id)
-	}, [register])
+	const toggle = useCallback((id: string, isVisible: boolean) => {
+		update(id, isVisible)
+	}, [update])
 
-	const toggleModal = useCallback((id: string, isVisible: boolean) => {
-		updateModal(id, prev => ({ ...prev, isVisible }))
-	}, [updateModal])
-
-	const getState = useCallback((id: string) => {
-		const state = register.get(id)
-		return state
-	}, [register])
+	const getState = useCallback((id: string) => Boolean(map.get(id)), [map])
 
 	return (
 		<modalRegisterContext.Provider
 			value={{
-				toggleModal,
-				registerModal,
-				updateModal,
+				toggle,
+				destroy,
+				register,
 				getState,
-				unregisterModal,
 			}}
 		>
 			{children}

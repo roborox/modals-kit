@@ -4,11 +4,10 @@ export namespace ModalRegister {
 	export type ModalState = Omit<RNModal.ModalProps, "children">
 
 	export type ContextValue = {
-		toggleModal: (id: string, isVisible: boolean) => void
-		registerModal: (id: string, initialProps: Partial<ModalState>) => void
-		updateModal: (id: string, next: (prev: ModalState) => ModalState) => void
-		getState: (id: string) => ModalState | undefined
-		unregisterModal: (id: string) => void
+		toggle: (id: string, isVisible: boolean) => void
+		register: (id: string, isVisible?: boolean) => void
+		destroy: (id: string) => void
+		getState: (id: string) => boolean
 	}
 
 	export type Logger = {

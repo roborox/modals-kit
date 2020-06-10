@@ -1,6 +1,7 @@
-import React, { useEffect } from "react"
+import React from "react"
 import RNModal from "react-native-modal"
-import { useModal, ModalRegister } from "../../modal-register"
+import { ModalRegister } from "../../modal-register"
+import { useModalRegister } from "../../modal-register/use-modal-register"
 
 export type ModalProps = Partial<ModalRegister.ModalState> & {
 	id: string
@@ -8,15 +9,9 @@ export type ModalProps = Partial<ModalRegister.ModalState> & {
 }
 
 export function Modal({ id, ...restProps }: ModalProps) {
-	const modal = useModal(id, restProps)
-
-	useEffect(() => {
-		modal.registerModal(restProps)
-
-		return modal.unregisterModal
-	}, [modal, modal.registerModal, restProps])
+	const isVisible = useModalRegister(id)
 
 	return (
-		<RNModal {...modal.getState()} {...restProps} />
+		<RNModal isVisible={isVisible} {...restProps} />
 	)
 }
