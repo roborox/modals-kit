@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SafeAreaView, View, StatusBar, Text, Button } from "react-native";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Modal, ModalRegisterProvider, useModal, ModalHalfBottom } from "../src"
 
 declare const global: {HermesInternal: null | {}};
@@ -14,7 +15,9 @@ const HalfScreenModal = () => {
 	const toggle = useModal("half-screen")
 	return (
 		<ModalHalfBottom maxHeight={200} id="half-screen">
-			<Button title="Hide modal" onPress={() => toggle(false)} />
+			<View style={{flex: 1, backgroundColor: "red"}}>
+				<Button title="Hide modal" onPress={() => toggle(false)} />
+			</View>
 		</ModalHalfBottom>
 	)
 }
@@ -56,10 +59,12 @@ const App = () => {
 
 const Root = () => {
 	return (
-		<ModalRegisterProvider logger={simpleLogger}>
-			<StatusBar barStyle="dark-content" />
-			<App />
-		</ModalRegisterProvider>
+		<SafeAreaProvider>
+			<ModalRegisterProvider logger={simpleLogger}>
+				<StatusBar barStyle="dark-content" />
+				<App />
+			</ModalRegisterProvider>
+		</SafeAreaProvider>
 	);
 };
 
