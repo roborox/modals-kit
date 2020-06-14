@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/roborox/modals-kit/compare/v1.1.1...v1.2.0) (2020-06-14)
+
+
+### Features
+
+* **GLW-169:** replace react-native-safe-area with react-native-safe-area-context ([d9c3e1e](https://github.com/roborox/modals-kit/commit/d9c3e1e9e75d5a2c62aa0cbbec277a820af4a560))
+
 ## [1.1.1](https://github.com/roborox/modals-kit/compare/v1.1.0...v1.1.1) (2020-06-10)
 
 
