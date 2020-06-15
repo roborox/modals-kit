@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/roborox/modals-kit/compare/v1.2.0...v1.2.1) (2020-06-15)
+
+
+### Bug Fixes
+
+* remove safe areas from ModalHalfBottom, remove unused dependencies ([ea5880f](https://github.com/roborox/modals-kit/commit/ea5880f2c490d568812b8d0bd49c9fee18f91a23))
+
 # [1.2.0](https://github.com/roborox/modals-kit/compare/v1.1.1...v1.2.0) (2020-06-14)
 
 
