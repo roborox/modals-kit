@@ -1,6 +1,5 @@
 import React, { useMemo } from "react"
 import deepmerge from "deepmerge"
-import { SafeAreaView } from "react-native-safe-area-context"
 import { View, StyleSheet, ViewStyle, useWindowDimensions } from "react-native"
 import { ModalProps, Modal } from "../modal"
 import { CloseButton } from "../close-button"
@@ -20,8 +19,7 @@ const modalHalfBottomStyles: StyleSheet.NamedStyles<ModalHalfBottomStyles> = {
 		backgroundColor: "#fff",
 		borderTopLeftRadius: 16,
 		borderTopRightRadius: 16,
-		paddingVertical: 32,
-		paddingHorizontal: 20,
+		paddingTop: 16,
 	},
 	content: {
 		flex: 1,
@@ -63,9 +61,7 @@ export function ModalHalfBottom({ maxHeight, styles = {}, children, ...restProps
 				}, combinedStyles.root]}
 			>
 				<CloseButton onPress={() => toggle(false)} style={combinedStyles.closeButton} />
-				<SafeAreaView edges={["bottom"]} style={combinedStyles.content}>
-					{children}
-				</SafeAreaView>
+				{children}
 			</View>
 		</Modal>
 	)

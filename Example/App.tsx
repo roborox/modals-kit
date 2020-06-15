@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { SafeAreaView, View, StatusBar, Text, Button } from "react-native";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { View, StatusBar, Text, Button, TextInput } from "react-native";
 import { Modal, ModalRegisterProvider, useModal, ModalHalfBottom } from "../src"
 
 declare const global: {HermesInternal: null | {}};
@@ -14,8 +13,9 @@ const simpleLogger = {
 const HalfScreenModal = () => {
 	const toggle = useModal("half-screen")
 	return (
-		<ModalHalfBottom maxHeight={200} id="half-screen">
+		<ModalHalfBottom maxHeight={230} id="half-screen">
 			<View style={{flex: 1, backgroundColor: "red"}}>
+				<TextInput multiline placeholder="Enter some text" style={{ flexGrow: 1, backgroundColor: "grey" }} />
 				<Button title="Hide modal" onPress={() => toggle(false)} />
 			</View>
 		</ModalHalfBottom>
@@ -42,7 +42,7 @@ const App = () => {
 	const toggle1 = useModal("simple")
 	const toggle2 = useModal("half-screen")
 	return (
-		<SafeAreaView style={{ flex: 1 }}>
+		<View style={{ flex: 1 }}>
 			<SimpleModal />
 			<HalfScreenModal />
 			<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -53,18 +53,16 @@ const App = () => {
 					Open half screen modal
 				</Text>
 			</View>
-		</SafeAreaView>
+		</View>
 	)
 }
 
 const Root = () => {
 	return (
-		<SafeAreaProvider>
-			<ModalRegisterProvider logger={simpleLogger}>
-				<StatusBar barStyle="dark-content" />
-				<App />
-			</ModalRegisterProvider>
-		</SafeAreaProvider>
+		<ModalRegisterProvider logger={simpleLogger}>
+			<StatusBar barStyle="dark-content" />
+			<App />
+		</ModalRegisterProvider>
 	);
 };
 
