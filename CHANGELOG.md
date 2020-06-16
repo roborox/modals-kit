@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/roborox/modals-kit/compare/v1.2.1...v1.2.2) (2020-06-16)
+
+
+### Bug Fixes
+
+* fix modal contexts ([f8ed893](https://github.com/roborox/modals-kit/commit/f8ed893b1ec6a833b6e76e6ed0da441ca53680aa))
+
 ## [1.2.1](https://github.com/roborox/modals-kit/compare/v1.2.0...v1.2.1) (2020-06-15)
 
 
