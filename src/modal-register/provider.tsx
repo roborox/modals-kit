@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { PropsWithChildren, useCallback, useState } from "react"
 import { modalRegisterContext } from "./context"
 import { ModalRegister } from "./types"
@@ -15,7 +15,7 @@ export function ModalRegisterProvider({
 
 	const update = useCallback((id: string, next: boolean) => {
 		setMap(prev => new Map(prev.set(id, next)))
-	}, [setMap])
+	}, [])
 
 	const destroy = useCallback((id: string) => {
 		setMap(prev => {
@@ -34,15 +34,17 @@ export function ModalRegisterProvider({
 
 	const getState = useCallback((id: string) => Boolean(map.get(id)), [map])
 
+	const value = useMemo(() => {
+		return {
+			toggle,
+			destroy,
+			register,
+			getState,
+		}
+	}, [toggle, destroy, register, getState])
+
 	return (
-		<modalRegisterContext.Provider
-			value={{
-				toggle,
-				destroy,
-				register,
-				getState,
-			}}
-		>
+		<modalRegisterContext.Provider value={value}>
 			{children}
 		</modalRegisterContext.Provider>
 	)
