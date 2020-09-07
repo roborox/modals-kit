@@ -8,7 +8,10 @@ export function useModal(id: string) {
 		throw new Error("Modal context is not found")
 	}
 
-	return useCallback((isVisible: boolean) => {
-		toggle(id, isVisible)
-	}, [toggle, id])
+	return useCallback(
+		(isVisible: boolean) => {
+			toggle(id, isVisible)
+		},
+		[toggle, id]
+	)
 }

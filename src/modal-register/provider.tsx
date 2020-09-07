@@ -9,7 +9,9 @@ export type ModalRegisterProviderProps = {
 }
 
 export function ModalRegisterProvider({
-	children, logger, defaultState = {},
+	children,
+	logger,
+	defaultState = {},
 }: PropsWithChildren<ModalRegisterProviderProps>) {
 	const [map, setMap] = useState(() => new Map<string, boolean>())
 
@@ -24,13 +26,19 @@ export function ModalRegisterProvider({
 		})
 	}, [])
 
-	const register = useCallback((id: string, isVisible = false) => {
-		update(id, isVisible)
-	}, [update])
+	const register = useCallback(
+		(id: string, isVisible = false) => {
+			update(id, isVisible)
+		},
+		[update]
+	)
 
-	const toggle = useCallback((id: string, isVisible: boolean) => {
-		update(id, isVisible)
-	}, [update])
+	const toggle = useCallback(
+		(id: string, isVisible: boolean) => {
+			update(id, isVisible)
+		},
+		[update]
+	)
 
 	const getState = useCallback((id: string) => Boolean(map.get(id)), [map])
 
@@ -43,9 +51,5 @@ export function ModalRegisterProvider({
 		}
 	}, [toggle, destroy, register, getState])
 
-	return (
-		<modalRegisterContext.Provider value={value}>
-			{children}
-		</modalRegisterContext.Provider>
-	)
+	return <modalRegisterContext.Provider value={value}>{children}</modalRegisterContext.Provider>
 }

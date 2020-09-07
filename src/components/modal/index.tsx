@@ -11,7 +11,5 @@ export type ModalProps = Partial<ModalRegister.ModalState> & {
 export function Modal({ id, ...restProps }: ModalProps) {
 	const isVisible = useModalRegister(id)
 
-	return (
-		<RNModal isVisible={isVisible} {...restProps} />
-	)
+	return <RNModal isVisible={isVisible} {...restProps} />
 }

@@ -10,18 +10,26 @@ export type CloseButtonProps = TouchableOpacityProps & {
 	size?: number
 }
 
-
 export function CloseButton({
-	style, svgProps, size = 36, iconSize = 14, iconColor = "rgba(255, 255, 255, 0.6)", ...restProps
+	style,
+	svgProps,
+	size = 36,
+	iconSize = 14,
+	iconColor = "rgba(255, 255, 255, 0.6)",
+	...restProps
 }: CloseButtonProps) {
 	return (
 		<TouchableOpacity
 			activeOpacity={0.9}
-			style={[styles.root, {
-				width: size,
-				height: size,
-				borderRadius: size,
-			}, style]}
+			style={[
+				styles.root,
+				{
+					width: size,
+					height: size,
+					borderRadius: size,
+				},
+				style,
+			]}
 			{...restProps}
 		>
 			<Svg width={iconSize} height={iconSize} viewBox="0 0 14 14" fill="none" {...restProps}>

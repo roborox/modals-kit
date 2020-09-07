@@ -17,12 +17,13 @@
 		"test": "jest --passWithNoTests --updateSnapshot",
 		"lint": "./node_modules/.bin/eslint --ext .js,.ts,.ts,.tsx ./",
 		"lint:fix": "./node_modules/.bin/eslint --ext .js,.ts,.ts,.tsx ./ --fix",
+		"lint:prettier": "npx prettier --write ./src ./tests",
 		"ci": "sh ./scripts/ci.sh",
 		"release": "sh ./scripts/release.sh"
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run lint && npm run test"
+			"pre-commit": "npm run lint:prettier && npm run lint && npm run test && git add ."
 		}
 	},
 	"author": {
@@ -57,7 +58,10 @@
 		"rimraf": "3.0.2",
 		"semantic-release": "17.0.2",
 		"ts-jest": "25.2.0",
-		"typescript": "3.9.3"
+		"typescript": "3.9.3",
+		"deepmerge": "4.2.2",
+		"prettier": "2.1.1",
+		"react-test-renderer": "16.13.1"
 	},
 	"peerDependencies": {
 		"react-native": ">= 0.61.5",
@@ -66,6 +70,6 @@
 		"react-native-svg": ">= 12.1.0"
 	},
 	"dependencies": {
-		"deepmerge": "4.2.2"
+		"eslint-config-prettier": "6.11.0"
 	}
 }

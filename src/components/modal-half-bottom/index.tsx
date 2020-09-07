@@ -56,9 +56,12 @@ export function ModalHalfBottom({ maxHeight, styles = {}, children, ...restProps
 			{...restProps}
 		>
 			<View
-				style={[{
-					maxHeight: maxHeight ? maxHeight : height * 0.5,
-				}, combinedStyles.root]}
+				style={[
+					{
+						maxHeight: maxHeight ? maxHeight : height * 0.5,
+					},
+					combinedStyles.root,
+				]}
 			>
 				<CloseButton onPress={() => toggle(false)} style={combinedStyles.closeButton} />
 				{children}
