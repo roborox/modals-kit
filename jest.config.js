@@ -1,6 +1,7 @@
 module.exports = {
 	roots: [
 		"<rootDir>/src",
+		"<rootDir>/tests",
 	],
 	transform: {
 		"\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest",
